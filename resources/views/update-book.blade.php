@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <form action="{{ route('updateBook', $book->id) }}" method="POST">
-        @method('PATCH')
+    <form action="{{ route('update.book', $book->id) }}" method="post">
         @csrf
+        @method('patch')
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Title</label>
             <input name="title" value="{{ $book->title }}" type="text" class="form-control">

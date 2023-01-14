@@ -28,7 +28,7 @@ Route::post('/create-book-post', [BookController::class, 'store'])->name('create
 Route::get('/update-book/{id}', [BookController::class, 'editView'])->name('update.book.view');
 
 //udpate book data
-Route::patch('/update/{$id}', [BookController::class, 'editView'])->name('updateBook');
+Route::patch('/update-book/{id}', [BookController::class, 'edit'])->name('update.book');//patch update book method
 
 //delete
 Route::delete('/delete/{id}', [BookController::class, 'destroy'])->name('deleteBook');
