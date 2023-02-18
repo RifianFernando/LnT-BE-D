@@ -93,51 +93,19 @@
             <div class="row g-5">
                 <div class="col-md-7 col-lg-8">
                     <h4 class="mb-3">Billing address</h4>
-                    <form action="{{ route('create.post') }}" method="POST">
+                    <form action="{{ route('category.create') }}" method="POST">
                         @csrf
                         <div class="row g-3">
                             <div class="col-sm-6">
-                                <label for="firstName" class="form-label">title</label>
-                                <input name="title" type="text" class="form-control" id="firstName" placeholder="">
+                                <label for="firstName" class="form-label">Category Name</label>
+                                <input name="CategoryName" type="text" class="form-control" id="firstName" placeholder="">
                                 <div class="invalid-feedback">
                                     Valid first name is required.
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <label for="firstName" class="form-label">stock</label>
-                                <input name="stock" type="number" class="form-control" id="firstName" placeholder="">
-                                <div class="invalid-feedback">
-                                    Valid first name is required.
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="firstName" class="form-label">writer</label>
-                                <input name="writer" type="text" class="form-control" id="firstName" placeholder="">
-                                <div class="invalid-feedback">
-                                    Valid first name is required.
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="firstName" class="form-label">content</label>
-                                <textarea name="content" class="form-control" id="firstName"></textarea>
-                                <div class="invalid-feedback">
-                                    Valid first name is required.
-                                </div>
-                            </div>
+                        <hr class="my-4">
 
-
-                            <div class="col-sm-6">
-                                <label for="category" class="form-label">Category</label>
-                                <select id="category" name="category_id">
-                                    @foreach ($category as $item)
-                                        <option value="{{ $item->id }}">{{ $item->CategoryName }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <hr class="my-4">
-
-                            <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
                     </form>
                 </div>
             </div>

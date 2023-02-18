@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -40,10 +41,11 @@ class BookController extends Controller
             'title' => $request->title,
             'stock' => $request->stock,
             'writer' => $request->writer,
-            'content' => $request->content
+            'content' => $request->content,
+            'category_id' => $request->category_id
         ]);
 
-        
+
         return redirect(route('home'));
     }
 
@@ -55,6 +57,7 @@ class BookController extends Controller
      */
     public function show()
     {
+        // dd(Book::all());
         return view('welcome', [
             'books'=> Book::all()
         ]);
@@ -62,7 +65,10 @@ class BookController extends Controller
 
     public function viewCreateBook()
     {
-        return view('createBookView');
+
+        return view ('createBookView', [
+            'category' => category::all()
+        ]);
     }
 
     /**

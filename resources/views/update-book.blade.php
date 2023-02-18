@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <form action="{{ route('updateBook', $book->id) }}" method="POST">
+    <form action="{{ route('update.book', $book->id) }}" method="POST">
         @method('PATCH')
         @csrf
         <div class="mb-3">

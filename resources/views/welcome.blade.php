@@ -129,6 +129,7 @@
                                     <h1 class="card-text">{{ $book->title }}</h1>
                                     <h4 class="card-text">Stock: {{ $book->stock }}</h4>
                                     <p class="card-text">{{ $book->content }}</p>
+                                    <p class="card-text">{{ $book->category->CategoryName }}</p>
                                     <h6 class="card-text">{{ $book->writer }}</h6>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">

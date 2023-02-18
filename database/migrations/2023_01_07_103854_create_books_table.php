@@ -14,11 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->id();
+            $table->id();//primary Key
             $table->string('title');
             $table->bigInteger('stock');
             $table->string('writer');
             $table->string('content');
+            $table->foreignId('category_id')
+                    ->references('id')
+                    ->on('categories')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');//Foreign Key
             $table->timestamps();
         });
     }

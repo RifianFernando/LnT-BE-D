@@ -12,8 +12,13 @@ class Book extends Model
         'title',
         'stock',
         'writer',
-        'content'
+        'content',
+        'category_id'
     ];
+
+    public function category(){
+        return $this->belongsTo(category::class);
+    }
 
     use HasFactory;
 }
