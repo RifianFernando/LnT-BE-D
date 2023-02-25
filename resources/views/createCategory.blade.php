@@ -78,6 +78,7 @@
 
 <body class="bg-light">
 
+    @include('navbar.navbar')
     <div class="container">
         <main>
             <div class="py-5 text-center">
@@ -98,14 +99,15 @@
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <label for="firstName" class="form-label">Category Name</label>
-                                <input name="CategoryName" type="text" class="form-control" id="firstName" placeholder="">
+                                <input name="CategoryName" type="text" class="form-control" id="firstName"
+                                    placeholder="">
                                 <div class="invalid-feedback">
                                     Valid first name is required.
                                 </div>
                             </div>
-                        <hr class="my-4">
+                            <hr class="my-4">
 
-                        <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+                            <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
                     </form>
                 </div>
             </div>

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author_Book_Join_Table;
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\authors;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -37,14 +39,17 @@ class BookController extends Controller
     public function store(Request $request)
     {
 
-        Book::create([
+        $book = Book::create([
             'title' => $request->title,
             'stock' => $request->stock,
-            'writer' => $request->writer,
             'content' => $request->content,
             'category_id' => $request->category_id
         ]);
 
+        Author_Book_Join_Table::create([
+            'book_id' => $book->id,
+            'author_id' => $request->author_id
+        ]);
 
         return redirect(route('home'));
     }
@@ -67,7 +72,8 @@ class BookController extends Controller
     {
 
         return view ('createBookView', [
-            'category' => category::all()
+            'category' => category::all(),
+            'authors' => authors::all()
         ]);
     }
 
@@ -79,9 +85,13 @@ class BookController extends Controller
      */
     public function editView($id)
     {
+        // $book = Book::find($id);
+        // dd($book->AuthorJoinTable->author);
 
         return view('update-book', [
-            'book' => Book::find($id)
+            'book' => Book::find($id),
+            'category' => Category::all(),
+            'authors' => authors::all()
         ]);
     }
 
@@ -91,9 +101,10 @@ class BookController extends Controller
         $book->update([
             'title' => $request->title,
             'stock' => $request->stock,
-            'writer' => $request->writer,
-            'content' => $request->content
+            'content' => $request->content,
+            'category' => $request->category_id
         ]);
+        // $author = Author_Book_Join_Table::find($book->)
 
         return redirect(route('home'));
     }

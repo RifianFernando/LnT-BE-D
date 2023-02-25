@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
-    <title>Checkout example · Bootstrap v5.3</title>
+    <title>Author</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
@@ -93,52 +93,23 @@
 
             <div class="row g-5">
                 <div class="col-md-7 col-lg-8">
-                    <h4 class="mb-3">Billing address</h4>
-                    <form action="{{ route('create.post') }}" method="POST">
+                    <h4 class="mb-3">Author Create</h4>
+                    <form action="{{ route('author.create') }}" method="POST">
                         @csrf
                         <div class="row g-3">
                             <div class="col-sm-6">
-                                <label for="firstName" class="form-label">title</label>
-                                <input name="title" type="text" class="form-control" id="firstName" placeholder="">
+                                <label for="firstName" class="form-label">Author Name</label>
+                                <input name="name" type="text" class="form-control" id="firstName" placeholder="">
                                 <div class="invalid-feedback">
                                     Valid first name is required.
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <label for="firstName" class="form-label">stock</label>
-                                <input name="stock" type="number" class="form-control" id="firstName" placeholder="">
+                                <label for="firstName" class="form-label">Birth Date</label>
+                                <input name="birth_of_date" type="date" class="form-control" id="date" placeholder="">
                                 <div class="invalid-feedback">
                                     Valid first name is required.
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="firstName" class="form-label">content</label>
-                                <textarea name="content" class="form-control" id="firstName"></textarea>
-                                <div class="invalid-feedback">
-                                    Valid first name is required.
-                                </div>
-                            </div>
-
-
-                            <div class="col-sm-6">
-                                <label for="category" class="form-label">Category</label>
-                                <select id="category" name="category_id">
-                                    <option value="" selected>Select a category</option>
-                                    @forelse ($category as $item)
-                                        <option value="{{ $item->id }}">{{ $item->CategoryName }}</option>
-                                    @empty
-                                    @endforelse
-                                </select>
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="author" class="form-label">Author</label>
-                                <select id="author" name="author_id">
-                                    <option value="" selected>Select authors</option>
-                                    @forelse ($authors as $author)
-                                        <option value="{{ $author->id }}">{{ $author->name }}</option>
-                                    @empty
-                                    @endforelse
-                                </select>
                             </div>
 
                             <hr class="my-4">

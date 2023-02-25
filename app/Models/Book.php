@@ -11,13 +11,17 @@ class Book extends Model
     protected $fillable = [
         'title',
         'stock',
-        'writer',
         'content',
         'category_id'
     ];
 
     public function category(){
         return $this->belongsTo(category::class);
+    }
+
+    public function AuthorJoinTable()
+    {
+        return $this->hasMany(Author_Book_Join_Table::class);
     }
 
     use HasFactory;

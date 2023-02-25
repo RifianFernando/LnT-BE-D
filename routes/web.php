@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
@@ -38,3 +39,7 @@ Route::delete('/delete/{id}', [BookController::class, 'destroy'])->name('deleteB
 Route::get('/create-category', [CategoryController::class, 'viewCreateCategory'])->name('category.view');
 
 Route::post('/create-category', [CategoryController::class, 'create'])->name('category.create');
+
+
+Route::get('/author', [AuthorsController::class, 'index'])->name('author.view');
+Route::post('/author-create', [AuthorsController::class, 'create'])->name('author.create');

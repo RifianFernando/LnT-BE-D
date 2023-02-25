@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();//primary Key
             $table->string('title');
             $table->bigInteger('stock');
-            $table->string('writer');
             $table->string('content');
             $table->foreignId('category_id')
                     ->references('id')

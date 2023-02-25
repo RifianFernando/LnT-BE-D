@@ -14,7 +14,8 @@
 </head>
 
 <body>
-    <form action="{{ route('update.book', $book->id) }}" method="POST">
+    @include('navbar.navbar')
+    <form action="{{ route('update.book', $book->id) }}" class="mt-5" method="POST">
         @method('PATCH')
         @csrf
         <div class="mb-3">
@@ -26,13 +27,38 @@
             <input name="stock" value="{{ $book->stock }}" type="number" class="form-control">
         </div>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Writer</label>
-            <input name="writer" value="{{ $book->writer }}" type="text" class="form-control">
-        </div>
-        <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Content</label>
             <input name="content" value="{{ $book->content }}" type="text" class="form-control">
         </div>
+        <div class="col-sm-6">
+            <label for="category" class="form-label">Category</label>
+            <select id="category" name="category_id">
+                <option value="" selected>Select a category</option>
+                @forelse ($category as $item)
+                    @if ($book->category->id == $item->id)
+                        <option value="{{ $item->id }}" selected>{{ $item->CategoryName }}</option>
+                    @else
+                        <option value="{{ $item->id }}">{{ $item->CategoryName }}</option>
+                    @endif
+                @empty
+                @endforelse
+            </select>
+        </div>
+
+        {{-- <div class="col-sm-6">
+            <label for="author" class="form-label">Authors</label>
+            <select id="author" name="author_id">
+                <option value="" selected>Select Author</option>
+                @forelse ($authors as $item)
+                    @if (2 == $item->id)
+                        <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
+                    @else
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    @endif
+                @empty
+                @endforelse
+            </select>
+        </div> --}}
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
