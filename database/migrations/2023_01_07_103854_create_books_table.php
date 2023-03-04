@@ -23,6 +23,7 @@ return new class extends Migration
                     ->on('categories')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');//Foreign Key
+            $table->string('bookImg');
             $table->timestamps();
         });
     }

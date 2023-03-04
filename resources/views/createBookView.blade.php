@@ -94,7 +94,7 @@
             <div class="row g-5">
                 <div class="col-md-7 col-lg-8">
                     <h4 class="mb-3">Billing address</h4>
-                    <form action="{{ route('create.post') }}" method="POST">
+                    <form action="{{ route('create.post') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row g-3">
                             <div class="col-sm-6">
@@ -114,6 +114,13 @@
                             <div class="col-sm-6">
                                 <label for="firstName" class="form-label">content</label>
                                 <textarea name="content" class="form-control" id="firstName"></textarea>
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="firstName" class="form-label">Book Image</label>
+                                <input name="bookImg" type="file" class="form-control" id="firstName" placeholder="">
                                 <div class="invalid-feedback">
                                     Valid first name is required.
                                 </div>

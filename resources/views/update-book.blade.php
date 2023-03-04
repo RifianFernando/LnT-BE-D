@@ -15,9 +15,9 @@
 
 <body>
     @include('navbar.navbar')
-    <form action="{{ route('update.book', $book->id) }}" class="mt-5" method="POST">
-        @method('PATCH')
+    <form action="{{ route('update.book', $book->id) }}" class="mt-5" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PATCH')
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Title</label>
             <input name="title" value="{{ $book->title }}" type="text" class="form-control">
@@ -29,6 +29,15 @@
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Content</label>
             <input name="content" value="{{ $book->content }}" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Book Image</label>
+            <br>
+            <img width="25%" src="{{asset('storage/'.$book->bookImg)}}" alt="">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Book Image</label>
+            <input name="bookImg" value="" type="file" class="form-control">
         </div>
         <div class="col-sm-6">
             <label for="category" class="form-label">Category</label>
@@ -45,12 +54,12 @@
             </select>
         </div>
 
-        {{-- <div class="col-sm-6">
+        <div class="col-sm-6">
             <label for="author" class="form-label">Authors</label>
             <select id="author" name="author_id">
                 <option value="" selected>Select Author</option>
                 @forelse ($authors as $item)
-                    @if (2 == $item->id)
+                    @if ($book->author_id == $item->id)
                         <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
                     @else
                         <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -58,7 +67,7 @@
                 @empty
                 @endforelse
             </select>
-        </div> --}}
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 

@@ -12,7 +12,8 @@ class Book extends Model
         'title',
         'stock',
         'content',
-        'category_id'
+        'category_id',
+        'bookImg'
     ];
 
     public function category(){
