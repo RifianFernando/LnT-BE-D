@@ -9,6 +9,7 @@ use App\Models\authors;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use PharIo\Manifest\Author;
 
 class BookController extends Controller
 {
