@@ -22,9 +22,10 @@
                         <a class="nav-link" href="{{ route('author.view') }}">Create Author</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <a href="/login" class="btn btn-outline-success">Login</a>
+                <form action="/logout" method="POST">
+                    @csrf
+                    <button type="submit" href="{{route('logout')}}">Logout</button>
                 </form>
             </div>
         </div>
