@@ -22,11 +22,15 @@
                         <a class="nav-link" href="{{ route('author.view') }}">Create Author</a>
                     </li>
                 </ul>
-                <a href="/login" class="btn btn-outline-success">Login</a>
-                <form action="/logout" method="POST">
-                    @csrf
-                    <button type="submit" href="{{route('logout')}}">Logout</button>
-                </form>
+                @auth
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button type="submit" href="{{ route('logout') }}">Logout</button>
+                    </form>
+                @endauth
+                @guest
+                    <a href="/login" class="btn btn-outline-success">Login</a>
+                @endguest
             </div>
         </div>
     </nav>

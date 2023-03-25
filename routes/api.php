@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiBookController;
+use App\Http\Controllers\ApiSendEmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,5 @@ Route::post('/update/{id}', [ApiBookController::class, 'edit']);
 
 //
 Route::delete('/delete/{id}', [ApiBookController::class, 'destroy']);
+
+Route::post('/send-email/{id}', [ApiSendEmailController::class, 'sendEmail']);

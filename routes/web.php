@@ -7,6 +7,7 @@ use App\Http\Controllers\loginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\regsiterController;
+use App\Http\Middleware\isAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +27,16 @@ use App\Http\Controllers\regsiterController;
 Route::get('/', [BookController::class, 'show'])->name('home');
 
 //view & create book
-Route::get('/create-book', [BookController::class, 'viewCreateBook'])->name('create.view');
-Route::post('/create-book-post', [BookController::class, 'store'])->name('create.post');
+// Route::get('/create-book', [BookController::class, 'viewCreateBook'])->name('create.view')->middleware(isAdmin::class);
+// Route::get('/create-book', [BookController::class, 'viewCreateBook'])->name('create.view')->middleware(['isAdmin']);
+// Route::post('/create-book-post', [BookController::class, 'store'])->name('create.post');
+
+Route::middleware(['isAdmin', 'auth'])->group(
+    function () {
+        Route::get('/create-book', [BookController::class, 'viewCreateBook'])->name('create.view');
+        Route::post('/create-book-post', [BookController::class, 'store'])->name('create.post');
+    }
+);
 
 // Update Book View
 Route::get('/update-book/{id}', [BookController::class, 'editView'])->name('update.book.view');
